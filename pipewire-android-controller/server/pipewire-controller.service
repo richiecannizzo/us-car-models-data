@@ -1,0 +1,15 @@
+[Unit]
+Description=PipeWire Audio Controller Server
+After=network.target pipewire.service
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/opt/pipewire-controller
+ExecStart=/opt/pipewire-controller/venv/bin/python /opt/pipewire-controller/pipewire_server.py
+Restart=always
+RestartSec=10
+Environment=PULSE_SERVER=unix:/run/user/%i/pulse/native
+
+[Install]
+WantedBy=multi-user.target

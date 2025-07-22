@@ -1,1 +1,44 @@
-*.rb
+# Build directories
+build/
+cmake-build-*/
+
+# JUCE framework (downloaded during setup)
+JUCE/
+
+# Model files (too large for git)
+Assets/htdemucs_traced.pt
+*.pt
+
+# Compiled binaries
+*.vst3
+*.so
+*.dylib
+*.dll
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+
+# LibTorch (downloaded during setup)
+libtorch/
+libtorch.zip
+
+# CSV data files (existing data)
+*.csv

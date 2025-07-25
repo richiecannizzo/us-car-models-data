@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAV Motorsports Work Order</title>
+    <style>
+        @media print {
+            body { margin: 0; }
+            .no-print { display: none; }
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+            background-color: white;
+            line-height: 1.2;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid black;
+            padding-bottom: 15px;
+        }
+        
+        .company-name {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 12px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .work-order {
+            text-decoration: underline;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+        }
+        
+        .form-row {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+        
+        .form-field {
+            margin-right: 30px;
+        }
+        
+        .form-field label {
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .underline {
+            border-bottom: 2px solid black;
+            display: inline-block;
+            min-width: 250px;
+            height: 20px;
+            margin-left: 5px;
+        }
+        
+        .underline-short {
+            border-bottom: 2px solid black;
+            display: inline-block;
+            min-width: 120px;
+            height: 20px;
+            margin-left: 5px;
+        }
+        
+        .underline-medium {
+            border-bottom: 2px solid black;
+            display: inline-block;
+            min-width: 180px;
+            height: 20px;
+            margin-left: 5px;
+        }
+        
+        .underline-long {
+            border-bottom: 2px solid black;
+            display: inline-block;
+            min-width: 400px;
+            height: 20px;
+            margin-left: 5px;
+        }
+        
+        .section-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 30px 0 20px 0;
+            text-decoration: underline;
+            letter-spacing: 2px;
+        }
+        
+        .vehicle-info-row {
+            display: flex;
+            margin-bottom: 15px;
+            justify-content: space-between;
+        }
+        
+        .vehicle-info-row .form-field {
+            flex: 1;
+            margin-right: 20px;
+        }
+        
+        .notes-section {
+            margin-top: 20px;
+        }
+        
+        .notes-lines {
+            border-bottom: 1px solid black;
+            width: 100%;
+            height: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .checkbox-line {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .checkbox {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 2px solid black;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        .technician-field {
+            margin-left: 80px;
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls no-print">
+        <button class="btn" onclick="window.print()">🖨️ Print Form</button>
+        <button class="btn" onclick="downloadHTML()">📥 Download HTML</button>
+    </div>
+
+    <div class="header">
+        <div class="company-name">LAV</div>
+        <div class="subtitle">Motorsports</div>
+        <div class="work-order">WORK ORDER</div>
+    </div>
+    
+    <div class="form-section">
+        <div class="form-row">
+            <div class="form-field">
+                <label>Client Name</label>
+                <span class="underline"></span>
+            </div>
+            <div class="form-field">
+                <label>DATE:</label>
+                <span class="underline-short"></span>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-field">
+                <label>Phone #</label>
+                <span class="underline"></span>
+            </div>
+            <div class="form-field">
+                <label>Time In</label>
+                <span class="underline-short"></span>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-field">
+                <label>Vehicle Information</label>
+            </div>
+            <div class="form-field technician-field">
+                <label>Technician</label>
+                <span class="underline-medium"></span>
+            </div>
+        </div>
+        
+        <div class="vehicle-info-row">
+            <div class="form-field">
+                <label>Year</label>
+                <span class="underline-short"></span>
+            </div>
+            <div class="form-field">
+                <label>Make</label>
+                <span class="underline-short"></span>
+            </div>
+            <div class="form-field">
+                <label>Model</label>
+                <span class="underline-short"></span>
+            </div>
+        </div>
+        
+        <div class="checkbox-line">
+            <span class="checkbox"></span> Pre-Inspect Vehicle for check engine lights and unrelated prior damage
+        </div>
+        
+        <div class="notes-section">
+            <label><strong>Notes:</strong></label>
+            <div class="notes-lines"></div>
+            <div class="notes-lines"></div>
+            <div class="notes-lines"></div>
+        </div>
+    </div>
+    
+    <div class="section-header">WHEELS/TIRES</div>
+    
+    <div class="form-section">
+        <div class="form-row">
+            <div class="form-field">
+                <label>Wheel Brand/Model</label>
+                <span class="underline-medium"></span>
+                <label style="margin-left: 20px;">Size</label>
+                <span class="underline-short"></span>
+                <label style="margin-left: 20px;">Pos</label>
+                <span class="underline-short"></span>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-field">
+                <label>Tire Brand/Model</label>
+                <span class="underline-medium"></span>
+                <label style="margin-left: 20px;">Size</label>
+                <span class="underline-short"></span>
+                <label style="margin-left: 20px;">Pos</label>
+                <span class="underline-short"></span>
+            </div>
+        </div>
+        
+        <div class="notes-section">
+            <label><strong>NOTES:</strong></label>
+            <div class="notes-lines"></div>
+            <div class="notes-lines"></div>
+        </div>
+    </div>
+    
+    <div class="section-header">Electronics</div>
+    
+    <div class="form-section">
+        <div class="form-row">
+            <div class="form-field">
+                <label>Job Type:</label>
+                <span class="underline-medium"></span>
+                <label style="margin-left: 30px;">Unit:</label>
+                <span class="underline-long"></span>
+            </div>
+        </div>
+        
+        <div class="notes-section">
+            <label><strong>Note:</strong></label>
+            <div class="notes-lines"></div>
+            <div class="notes-lines"></div>
+            <div class="notes-lines"></div>
+            <div class="notes-lines"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>LAV Motorsports Work Order Form | Generated: <span id="currentDate"></span></p>
+    </div>
+
+    <script>
+        // Set current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
+        
+        // Download HTML function
+        function downloadHTML() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'LAV_Motorsports_Work_Order.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
